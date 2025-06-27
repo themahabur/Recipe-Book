@@ -1,70 +1,55 @@
 import { AuthContext } from "../provider/AuthProvider";
 import { Fade } from "react-awesome-reveal";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
+import chefBro from "../assets/Chef-bro.svg";
+import CookingPana from "../assets/Cooking-pana.svg";
+import { Link } from "react-router";
 
 const Banner = () => {
   return (
-    <Fade cascade direction="down">
-      <div className="carousel m-4 rounded-lg">
-        <div id="slide1" className="carousel-item relative w-full">
-          <img
-            src="https://images.pexels.com/photos/1640771/pexels-photo-1640771.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            className="w-full h-100 object-cover"
-          />
-
-          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-            <a href="#slide4" className="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide2" className="btn btn-circle">
-              ❯
-            </a>
-          </div>
+    <Carousel
+      autoPlay
+      infiniteLoop
+      showStatus={false}
+      showIndicators={false}
+      showThumbs={false}
+      className="w-full "
+    >
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 p-4 rounded-lg ">
+        <div className="md:w-1/2 flex flex-col items-start  gap-4  p-8 rounded-lg">
+          <h3 className="text-3xl font-bold">Delicious Recipes Just For You</h3>
+          <p className="text-lg">
+            Explore a variety of mouth-watering recipes curated just for you.
+          </p>
+          <Link to="/allRecipes">
+            <button className="py-2 px-4 bg-yellow-100 rounded-lg cursor-pointer hover:bg-yellow-200 font-medium text-yellow-600">
+              Explore Recipes
+            </button>
+          </Link>
         </div>
-        <div id="slide2" className="carousel-item relative w-full">
-          <img
-            src="https://images.pexels.com/photos/691114/pexels-photo-691114.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            className="w-full h-100 object-cover"
-          />
-          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-            <a href="#slide1" className="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide3" className="btn btn-circle">
-              ❯
-            </a>
-          </div>
-        </div>
-        <div id="slide3" className="carousel-item relative w-full">
-          <img
-            src="https://images.pexels.com/photos/1556688/pexels-photo-1556688.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            className="w-full h-100 object-cover"
-          />
-          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-            <a href="#slide2" className="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide4" className="btn btn-circle">
-              ❯
-            </a>
-          </div>
-        </div>
-        <div id="slide4" className="carousel-item relative w-full">
-          <img
-            src="https://images.pexels.com/photos/162786/ingredients-butter-cheese-cookies-162786.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            className="w-full h-100 object-cover"
-          />
-          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-            <a href="#slide3" className="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide1" className="btn btn-circle">
-              ❯
-            </a>
-          </div>
+        <div className="md:w-1/2 w-full flex items-center justify-center">
+          <img src={chefBro} alt="" />
         </div>
       </div>
-    </Fade>
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 p-4 rounded-lg">
+        <div className="md:w-1/2 flex flex-col items-start  gap-4  p-8 rounded-lg">
+          <h3 className="text-3xl font-bold">Cook Like a Pro</h3>
+          <p className="text-lg">
+            Master the art of cooking with our expert tips and tricks.
+          </p>
+          <Link to="/allRecipes">
+            <button className="py-2 px-4 bg-yellow-100 rounded-lg cursor-pointer hover:bg-yellow-200 font-medium text-yellow-600">
+              Explore Recipes
+            </button>
+          </Link>
+        </div>
+        <div className="md:w-1/2 w-full flex items-center justify-center">
+          <img src={CookingPana} alt="" />
+        </div>
+      </div>
+    </Carousel>
   );
 };
 

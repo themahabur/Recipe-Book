@@ -13,7 +13,7 @@ const ErrorPages = () => {
         />
       </div>
       <Link to={"/"}>
-        <button className="py-2 px-3 bg-green-100 rounded-lg cursor-pointer hover:bg-green-200 font-medium text-green-600">
+        <button className="py-2 px-3 bg-yellow-100 rounded-lg cursor-pointer hover:bg-yellow-200 font-medium text-yellow-600">
           Go Back Home
         </button>
       </Link>

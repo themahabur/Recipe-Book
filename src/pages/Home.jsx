@@ -11,7 +11,7 @@ const Home = () => {
   // console.log(topRecipes);
 
   return (
-    <div >
+    <div className="min-h-screen">
       <div>
         <Banner></Banner>
       </div>

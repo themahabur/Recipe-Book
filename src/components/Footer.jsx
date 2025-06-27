@@ -1,51 +1,48 @@
-import React from "react";
-import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
-import { IoIosCall } from "react-icons/io";
-import { MdOutlineAlternateEmail } from "react-icons/md";
-import { Link } from "react-router";
+import React from 'react';
+import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 const Footer = () => {
   return (
-    <div className=" border-2 border-gray-300 rounded-lg px-10 py-2 m-4">
-      <div className="md:flex justify-between items-center p-6 space-y-4">
+    <footer className="bg-gray-900  text-gray-300 py-10 px-6">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-center md:text-left">
+        
+        {/* Website Logo / Name */}
         <div>
-          <h1 className="text-xl font-bold">
-            RECIPE <span className="text-green-600">BOOK</span>
-          </h1>
+          <h2 className="text-2xl font-bold text-white mb-2">🍲 Recipe Book</h2>
+          <p className="text-sm">Discover, save, and share your favorite recipes with the world!</p>
         </div>
-        <div className="flex flex-col gap-2">
-          <h3 className="text-xl font-medium mb-3">Contact</h3>
-          <div className="flex items-center gap-2 ">
-            <IoIosCall size={24} />
-            <p>01700000000</p>
-          </div>
-          <div className="flex items-center gap-2 ">
-            <MdOutlineAlternateEmail size={24} />
-            <p>contact@recipebook.com</p>
-          </div>
+
+        {/* Navigation Links */}
+        <div>
+          <h3 className="text-lg font-semibold mb-3 text-white">Quick Links</h3>
+          <ul className="space-y-2 text-sm">
+            <li><Link to="/" className="hover:text-white transition">Home</Link></li>
+            <li><Link to="/add-recipe" className="hover:text-white transition">Add Recipe</Link></li>
+            <li><Link to="/my-recipe" className="hover:text-white transition">My Recipes</Link></li>
+            <li><Link to="/contact" className="hover:text-white transition">Contact</Link></li>
+          </ul>
         </div>
-        <div className="flex gap-4 justify-center items-center">
-          <Link to="https://www.facebook.com/mahabur.rahman21">
-            <FaFacebook size={24} />
-          </Link>
-          <Link to="https://www.youtube.com/@MahaburRahmanOfficial">
-            <FaYoutube size={24} />
-          </Link>
-          <Link to="https://x.com/Soikot21">
-            <FaTwitter size={24} />
-          </Link>
+
+        {/* Social Media */}
+        <div>
+          <h3 className="text-lg font-semibold mb-3 text-white">Follow Us</h3>
+          <div className="flex justify-center md:justify-start gap-4">
+            <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-white">
+              <FaFacebookF size={20} />
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-white">
+              <FaLinkedinIn size={20} />
+            </a>
+          </div>
         </div>
       </div>
 
-      <div className="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
-        <aside>
-          <p>
-            Copyright © {new Date().getFullYear()} - All right reserved by
-            Recipe Book
-          </p>
-        </aside>
+      {/* Bottom Line */}
+      <div className="mt-8 text-center text-sm border-t border-gray-700 pt-4">
+        &copy; {new Date().getFullYear()} Recipe Book. All rights reserved.
       </div>
-    </div>
+    </footer>
   );
 };
 

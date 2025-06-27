@@ -25,7 +25,7 @@ const AllRecipes = () => {
         <h1 className="text-3xl font-bold">All Recipes</h1>
         <div>
           <select
-            className="py-2 px-3 bg-green-100 rounded-lg cursor-pointer font-medium text-green-600"
+            className="py-2 px-3 bg-yellow-100 rounded-lg cursor-pointer font-medium text-yellow-600"
             onChange={(e) => setSelectedCuisine(e.target.value)}
             value={selectedCuisine}
           >

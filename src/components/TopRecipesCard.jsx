@@ -5,7 +5,7 @@ import { Link } from "react-router";
 
 const TopRecipesCard = ({recipe}) => {
   return (
-    <div className="flex flex-col gap-2 p-4 border-2 border-gray-100 rounded-lg ">
+    <div className="flex flex-col gap-2 p-4 border border-gray-100 rounded-lg ">
       <img
         className="rounded-lg"
         src={recipe?.photoURL}
@@ -22,7 +22,7 @@ const TopRecipesCard = ({recipe}) => {
         </div>
         <div>
           <Link to={`/viewRecipe/${recipe?._id}`}>
-            <button className="py-2 px-3 bg-green-100 rounded-lg cursor-pointer hover:bg-green-200 font-medium text-green-600">
+            <button className="py-2 px-3 bg-yellow-100 rounded-lg cursor-pointer hover:bg-yellow-200 font-medium text-yellow-600">
               View Recipe
             </button>
           </Link>

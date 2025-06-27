@@ -13,6 +13,10 @@ import ErrorPages from "../pages/ErrorPages";
 import LoadingPage from "../pages/LoadingPage";
 import UpdateRecipe from "../pages/UpdateRecipe";
 import ViewRecipe from "../pages/ViewRecipe";
+import AboutUs from "../pages/AboutUs";
+import Contact from "../pages/Contact";
+import Support from "../pages/Support";
+import Dashboard from "../pages/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -27,13 +31,26 @@ const router = createBrowserRouter([
       },
       {
         path: "/allRecipes",
+        hydrateFallbackElement: <LoadingPage></LoadingPage>,
         loader: () => fetch("https://recipe-server-three.vercel.app/recipes"),
+
         element: (
           <ProtectedRoute>
             <AllRecipes></AllRecipes>
           </ProtectedRoute>
         ),
-        hydrateFallbackElement: <LoadingPage></LoadingPage>,
+        
+      },
+      {
+        path: "/about",
+        element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>,
+      },{
+        path: "/support",
+        element: <Support></Support>,
       },
       {
         path: "/addRecipe",
@@ -43,6 +60,13 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
         hydrateFallbackElement: <LoadingPage></LoadingPage>,
+      },{
+        path: "/dashboard",
+        element: (
+          <ProtectedRoute>
+            <Dashboard></Dashboard>
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/myRecipes",

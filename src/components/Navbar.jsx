@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
@@ -29,32 +29,84 @@ const Navbar = () => {
   };
 
   return (
-    <div className="relative flex justify-between items-center border-2 border-gray-300 rounded-lg p-4 m-4 ">
+    <div className="relative flex justify-between items-center rounded-lg p-4 m-4 ">
       <div className="flex items-center justify-center">
         <h1 className="text-xl font-bold">
-          RECIPE <span className="text-green-600">BOOK</span>
+          RECIPE <span className="text-yellow-600">BOOK</span>
         </h1>
       </div>
       <div className="md:flex gap-4 justify-center items-center hidden">
-        <Link className="cursor-pointer font-medium" to="/">
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-yellow-600 cursor-pointer font-medium hover:text-yellow-600"
+              : "cursor-pointer font-medium hover:text-yellow-600  "
+          }
+          to="/"
+        >
           Home
-        </Link>
-        <Link className="cursor-pointer font-medium" to="/allRecipes">
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-yellow-600 cursor-pointer font-medium hover:text-yellow-600"
+              : "cursor-pointer font-medium hover:text-yellow-600  "
+          }
+          to="/allRecipes"
+        >
           All Recipes
-        </Link>
-        <Link className="cursor-pointer font-medium" to="/addRecipe">
-          Add Recipe
-        </Link>
-        <Link className="cursor-pointer font-medium" to="/myRecipes">
-          My Recipes
-        </Link>
+        </NavLink>
+        {userData && (
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? "text-yellow-600 cursor-pointer font-medium hover:text-yellow-600"
+                : "cursor-pointer font-medium hover:text-yellow-600  "
+            }
+            to="/dashboard"
+          >
+            Dashboard
+          </NavLink>
+        )}
+
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-yellow-600 cursor-pointer font-medium hover:text-yellow-600"
+              : "cursor-pointer font-medium hover:text-yellow-600  "
+          }
+          to="/about"
+        >
+          About us
+        </NavLink>
+
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-yellow-600 cursor-pointer font-medium hover:text-yellow-600"
+              : "cursor-pointer font-medium hover:text-yellow-600  "
+          }
+          to="/contact"
+        >
+          Contact
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-yellow-600 cursor-pointer font-medium hover:text-yellow-600"
+              : "cursor-pointer font-medium hover:text-yellow-600  "
+          }
+          to="/support"
+        >
+          Support
+        </NavLink>
       </div>
       <div className="flex items-center gap-4">
         {userData ? (
           <div className="flex gap-4 ">
             <div
               className="cursor-pointer rounded-full bg-blue-100"
-              onMouseEnter={() => setShowProfileMenu(!showProfileMenu)}
+              onClick={() => setShowProfileMenu(!showProfileMenu)}
             >
               <img
                 src={userData?.photoURL}
@@ -111,37 +163,37 @@ const Navbar = () => {
           </label>
         </div>
       </div>
-      <div
-        onMouseLeave={() => setShowProfileMenu(!showProfileMenu)}
-        className={`absolute  p-1 z-1 flex rounded-lg flex-col gap-1 mx-auto right-0 top-20 w-full md:w-1/4 transition-transform duration-300  ${
-          showProfileMenu ? "" : "hidden"
-        }`}
-      >
-        <button className="bg-green-200 text-green-800 rounded-lg px-4 py-2 font-medium cursor-pointer">
-          <Link to={`/`}>{userData?.displayName}</Link>
-        </button>
-        <button className="bg-green-200 text-green-800 rounded-lg px-4 py-2 font-medium cursor-pointer">
-          <Link className="cursor-pointer font-medium" to="/allRecipes">
-            All Recipes
-          </Link>
-        </button>
-        <button className="bg-green-200 text-green-800 rounded-lg px-4 py-2 font-medium cursor-pointer">
-          <Link className="cursor-pointer font-medium" to="/addRecipe">
-            Add Recipe
-          </Link>
-        </button>
-        <button className="bg-green-200 text-green-800 rounded-lg px-4 py-2 font-medium cursor-pointer">
-          <Link className="cursor-pointer font-medium" to="/myRecipes">
-            My Recipes
-          </Link>
-        </button>
-        <button
-          onClick={handleLogout}
-          className="bg-green-200 text-green-800 rounded-lg px-4 py-2 font-medium cursor-pointer"
+      {showProfileMenu && userData && (
+        <div
+          className="absolute top-16 right-0 mt-2 w-52 bg-white  rounded-lg shadow-md py-2 flex flex-col z-50"
+          onMouseLeave={() => setShowProfileMenu(false)}
         >
-          logout
-        </button>
-      </div>
+          <span className="px-4 py-2 text-sm font-medium text-gray-700">
+            👤 {userData?.displayName}
+          </span>
+
+          <Link
+            to="/dashboard"
+            className="hover:bg-gray-100 px-4 py-2 text-sm text-gray-700"
+          >
+           Dashboard
+          </Link>
+
+          <Link
+            to="/allRecipes"
+            className="hover:bg-gray-100 px-4 py-2 text-sm text-gray-700"
+          >
+           All Recipes
+          </Link>
+        
+          <button
+            onClick={handleLogout}
+            className="hover:bg-red-100 px-4 py-2 text-sm text-red-600 text-left"
+          >
+            Logout
+          </button>
+        </div>
+      )}
     </div>
   );
 };
